@@ -1,0 +1,14 @@
+在server文件夹内使用express脚手架
+终端运行 express -e .
+-e 表示使用ejs模板引擎
+
+
+使用之前先安装
+sudo npm install -g express
+sudo npm install -g express-generator
+ 
+
+ 在根目录下 初始化package.json 
+ npm init,一路回车
+ 新建   .babelrc
+ 新建   .gulpfile.babel.js
