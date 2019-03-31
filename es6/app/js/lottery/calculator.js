@@ -10,7 +10,7 @@ class Calculate{
         const exist = this.play_list.has(play_name);
         const arr = new Array(active).fill('0'); //指定长度为active的填充元素为0的数组
         if(exist && play_name.at(0)==='r'){
-            count = Calculate.combine(arr,play_name.split(''));
+            count = Calculate.combine(arr,play_name.split('')).length;
         }
         return count;
     }
@@ -44,5 +44,6 @@ class Calculate{
                 }
             }
         })(arr,size,[])
+        return allResult;
     }
 }
