@@ -1,8 +1,8 @@
 import 'babel-polyfill';
-import Base from './lottery/base.js';
-import Timer from './lottery/calculator.js';
-import Calculate from './lottery/interface.js';
-import Interface from './lottery/timer.js';
+import Base from './lottery/base';
+import Timer from './lottery/timer';
+import Calculate from './lottery/calculate';
+import Interface from './lottery/interface';
 import $ from 'jquery';
 
 //多重继承的深度拷贝
@@ -10,8 +10,7 @@ const copyProperties = function(target,source){
     for (let key of Reflect.ownKeys(source)) {
        if(key !== 'constructor' && key !== 'prototype' && key !== 'name') {
            let desc = Object.getOwnPropertyDescriptor(source,key);
-           Object.defineProperty(target,key.desc);
-
+           Object.defineProperty(target,key,desc);
        }
     }
 }
@@ -24,7 +23,7 @@ const mix = function(...mixins){
     return Mix
 }
 class Lottery extends mix(Base,Calculate,Interface,Timer){
-    constructor(name = 'syy',cname='11选5',issue='==',state='**'){
+    constructor(name = 'syy',cname='11选5',issue='**',state='**'){
         super();
         this.name = name;
         this.cname = cname;
@@ -36,7 +35,7 @@ class Lottery extends mix(Base,Calculate,Interface,Timer){
         this.open_code_list=  new Set();
         this.play_list = new Map();
         this.number = new Set();
-        this.issue_el = '#cur_issue';
+        this.issue_el = '#curr_issue';
         this.countdown_el = '#countdown';
         this.state_el = '.state_el';
         this.cart_el = '.codelist';
@@ -57,7 +56,7 @@ class Lottery extends mix(Base,Calculate,Interface,Timer){
             self.end_time = res.end_time;
             self.state = res.state;
             $(self.issue_el).text(res.issue);
-            self.countdown_el(res.end_time,function(time){
+            self.countdown(res.end_time,function(time){
                 $(self.countdown_el).html(time);
             },function(){
                 setTimeout(function(){
@@ -67,17 +66,17 @@ class Lottery extends mix(Base,Calculate,Interface,Timer){
                     });
                     self.getOpenCode(self.issue).then(function(res){
                         
-                    },500)
-                })
-            });
-        });
+                    })
+                },500);
+            })
+        })
         
     }
     /**
      * [initEvent 初始化事件]
      */
     initEvent(){
-        let self=  this;
+        let self = this;
         //玩法切换
         $('#plays').on('click','li',self.changePlayNav.bind(self));
         $('.boll-list').on('click','btn-boll',self.toggleCodeActive.bind(self));

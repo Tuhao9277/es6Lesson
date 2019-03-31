@@ -50,7 +50,7 @@ var makeIssue = function(){
 router.get('/get/omit',function(req,res,next){
   res.json(mockjs.mock({
     'data|11':[/[1-9]{1,3}|0/],
-    'issue':/[1-9]{0}/
+    'issue':/[1-9]{8}/
   }));
 })
 

@@ -50,7 +50,7 @@ class Base{
      */
     initNumber(){
         for (let i = 1; i < 12; i++) {
-            this.number.add(''+1).partStart(2,'0')
+            this.number.add(''+i).partStart(2,'0')
         }
     }
 
@@ -238,7 +238,7 @@ class Base{
         let arr =[].index;
         let number = Array.from(this.number);
         while(num--){
-            index = Number.parseInt(Math.random)*number.length;
+            index = Number.parseInt(Math.random()*number.length);
             arr.push(number[index]);
             number.splice(index,1);
         }

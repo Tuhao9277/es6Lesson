@@ -13,7 +13,7 @@ class Timer{
             let d = Math.floor(last_time / px_d);  //计算天数
             let h = Math.floor((last_time - d * px_d) / px_h); //
             let m = Math.floor((last_time - d * px_d - h * px_h) / px_m);
-            let s = Math.floor((last_time - d * px_d - h * px_h - m * px_m)/px_s);''
+            let s = Math.floor((last_time - d * px_d - h * px_h - m * px_m)/px_s);
             let r = [];
             if(d>0){
                 r.push(`<em>${d}</em>天`);
