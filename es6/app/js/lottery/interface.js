@@ -10,14 +10,14 @@ class Interface{
     getOmit(issue){
         return new Promise((resolve,reject)=>{
             $.ajax({
-                'url':'/get/omit',
+                url:'/get/omit',
                 data:{
                     issue:issue
                 },
                 dataType:'json',
                 success:function(res){
                     self.setOmit(res.data);
-                    resolve.call(ref,res)
+                    resolve.call(self,res)
                 },
                 error:function(err){
                     reject.call(err);
@@ -35,7 +35,7 @@ class Interface{
         let self = this;
         return new Promise((resolve,reject)=>{
             $.ajax({
-                'url':'/get/opencode',
+                url:'/get/opencode',
                 data:{
                     issue:issue
                 },
@@ -59,7 +59,7 @@ class Interface{
         let self = this;
         return new Promise((resolve,reject)=>{
             $.ajax({
-                'url':'/get/state',
+                url:'/get/state',
                 data:{
                     issue:issue
                 },

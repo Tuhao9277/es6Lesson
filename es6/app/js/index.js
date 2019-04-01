@@ -3,4 +3,3 @@
  
  const syy = new Lottery();
  
- console.log(syy);

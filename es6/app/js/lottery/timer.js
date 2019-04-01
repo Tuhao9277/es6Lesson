@@ -31,7 +31,7 @@ class Timer{
             update.call(self,r.join(''));
             setTimeout(function(){
                 self.countdown(end,update,handle);
-            },1000)
+            },1000);
         }
     }
 }

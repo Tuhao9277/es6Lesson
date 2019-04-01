@@ -6,14 +6,14 @@ import Interface from './lottery/interface';
 import $ from 'jquery';
 
 //多重继承的深度拷贝
-const copyProperties = function(target,source){
-    for (let key of Reflect.ownKeys(source)) {
-       if(key !== 'constructor' && key !== 'prototype' && key !== 'name') {
-           let desc = Object.getOwnPropertyDescriptor(source,key);
-           Object.defineProperty(target,key,desc);
-       }
+const copyProperties=function(target,source){
+    for(let key of Reflect.ownKeys(source)){
+      if(key!=='constructor'&&key!=='prototype'&&key!=='name'){
+        let desc=Object.getOwnPropertyDescriptor(source,key);
+        Object.defineProperty(target,key,desc);
+      }
     }
-}
+  }
 const mix = function(...mixins){
     class Mix{}
     for (let mixin of mixins) {
@@ -40,7 +40,7 @@ class Lottery extends mix(Base,Calculate,Interface,Timer){
         this.state_el = '.state_el';
         this.cart_el = '.codelist';
         this.omit_el = '';
-        this.cur_play = 'r5' ;
+        this.cur_play = 'r5';
         this.initPlayList();
         this.initNumber();
         this.updateState();

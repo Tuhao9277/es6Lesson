@@ -46,11 +46,11 @@ class Base{
      * [initNumber] 初始化号码
      * @return{[type]}
      * 
-     * Es6补白 partStart()
+     * Es6补白 padStart()
      */
     initNumber(){
         for (let i = 1; i < 12; i++) {
-            this.number.add((''+i).partStart(2,'0'))
+            this.number.add((''+i).padStart(2,'0'))
         }
     }
 
