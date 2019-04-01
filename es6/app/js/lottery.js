@@ -16,7 +16,7 @@ const copyProperties = function(target,source){
 }
 const mix = function(...mixins){
     class Mix{}
-    for (const mixin of mixins) {
+    for (let mixin of mixins) {
         copyProperties(Mix,mixin);
         copyProperties(Mix.prototype,mixin.prototype);
     }

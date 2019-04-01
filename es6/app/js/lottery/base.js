@@ -50,7 +50,7 @@ class Base{
      */
     initNumber(){
         for (let i = 1; i < 12; i++) {
-            this.number.add(''+i).partStart(2,'0')
+            this.number.add((''+i).partStart(2,'0'))
         }
     }
 
@@ -69,14 +69,17 @@ class Base{
             $(item).text(self.omit.get(index))
         })
     }
-    
+    /**
+     * [setOpenCode 设置开奖]
+     * @param {[type]} code [description]
+     */
     setOpenCode(code){
         let self = this;
         self.open_code.clear();
         for (let item of code.values()) {
             self.open_code.add(item);
         }
-        self.ipdateOpenCode && self.ipdateOpenCode.call(self,code);
+        self.updateOpenCode && self.updateOpenCode.call(self,code);
     }
 
     /**
@@ -113,11 +116,7 @@ class Base{
         let index = $cur.index();
         $('.boll-list .btn-boll').removeClass('btn-boll-active');
         if(index === 0){
-            $('boll-list .btn-boll').each(function(i,t){
-                if(t.textContent-5>0){
-                    $(t).addClass('btn-boll-active');
-                }
-            })
+            $('boll-list .btn-boll').addClass('btn-boll-active');
         }
         if(index === 1){
             $('boll-list .btn-boll').each(function(i,t){
@@ -150,7 +149,7 @@ class Base{
         self.getCount();
     }
     /**
-     * 获取当前彩票名称
+     * [getName 获取当前彩票名称]
      * @return {[type]}
      */
     getName(){
@@ -171,7 +170,7 @@ class Base{
         }
     }
     /**
-     * [addCodeItem] 添加单次号码
+     * [addCodeItem 添加单次号码] 
      * @param {*} code 
      * @param {*} type 
      * @param {*} typeName 
@@ -224,11 +223,11 @@ class Base{
 
     getTotal(){
         let count = 0;
-        $(`.codelist li`).each(function(index,item){
+        $('.codelist li').each(function(index,item){
             count +=$(item).attr('count')*1;
         })
-        $(`#count`).text(count);
-        $(`#money`).text(count*2);
+        $('#count').text(count);
+        $('#money').text(count*2);
     }
     /**
      * [getRandom] 生成随机数
@@ -257,7 +256,7 @@ class Base{
             $(self.cart_el).html('')
         }else{
             for (let i = 0; i < num; i++) {
-               self.addCodeItem(self.getRandom(play).self.cur_play,self.play_list.get(self.cur_play).name,1);
+               self.addCodeItem(self.getRandom(play),self.cur_play,self.play_list.get(self.cur_play).name,1);
             }
         }
     }
