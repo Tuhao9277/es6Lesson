@@ -1,8 +1,8 @@
 import 'babel-polyfill';
-import Base from './lottery/base';
-import Timer from './lottery/timer';
-import Calculate from './lottery/calculate';
-import Interface from './lottery/interface';
+import Base from './lottery/base.js';
+import Timer from './lottery/timer.js';
+import Calculate from './lottery/calculate.js';
+import Interface from './lottery/interface.js';
 import $ from 'jquery';
 
 //多重继承的深度拷贝
@@ -52,6 +52,7 @@ class Lottery extends mix(Base,Calculate,Interface,Timer){
     updateState(){
         let self = this;
         this.getState().then(function(res){
+            
             self.issue = res.issue;
             self.end_time = res.end_time;
             self.state = res.state;
@@ -80,7 +81,7 @@ class Lottery extends mix(Base,Calculate,Interface,Timer){
         //玩法切换
         $('#plays').on('click','li',self.changePlayNav.bind(self));
         $('.boll-list').on('click','btn-boll',self.toggleCodeActive.bind(self));
-        $('#confirm_sel_code)').on('click',self.addCode.bind(self));
+        $('#confirm_sel_code').on('click',self.addCode.bind(self));
         $('.dxjo').on('click','li',self.assistHandle.bind(self));
         $('qkmethod').on('click','btn-middle',self.getRandomCode.bind(self));
     }

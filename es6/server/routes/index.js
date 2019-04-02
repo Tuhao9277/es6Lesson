@@ -68,7 +68,7 @@ router.get('/get/opencode',function(req,res,next){
 })
 
 router.get('/get/state/',function(req,res,next){
-  var issue = makeIssue();
+  var state = makeIssue();
   res.json(state);
 
 })
